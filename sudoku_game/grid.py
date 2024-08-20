@@ -1,6 +1,9 @@
 from random import sample
 from number_button import NumberButton
+<<<<<<< HEAD
 from gamemodes import GameModes
+=======
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
 import pygame
 from copy import deepcopy
 
@@ -35,6 +38,7 @@ def create_grid(subgrid: int) -> list[list]:
 def remove_numbers(grid: list[list]) -> None:
     # randomly sets numbers to 0 on the grid
     num_cells = GRID_SIZE ** 2
+<<<<<<< HEAD
     empties = num_cells * 3 // 7     # 5
     for i in sample(range(num_cells), empties):
         grid[i // GRID_SIZE][i % GRID_SIZE] = 0
@@ -48,6 +52,9 @@ def remove_numbers1(grid: list[list], difficulty: str) -> None:
     elif difficulty == "Hard":
         n = 4
     empties = num_cells * 3 // n      # 5
+=======
+    empties = num_cells * 3 // 10      # 5
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
     for i in sample(range(num_cells), empties):
         grid[i // GRID_SIZE][i % GRID_SIZE] = 0
 
@@ -65,10 +72,15 @@ class Grid:
         #print(self.unplayable)
 
         self.game_font = font
+<<<<<<< HEAD
         self.difficulty = "Easy"
 
         self.number_buttons = NumberButton(pygame, self.game_font)
         self.gamemode = GameModes(pygame, self.game_font)
+=======
+
+        self.number_buttons = NumberButton(pygame, self.game_font)
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
     
     def get_mouse_click(self, x: int, y: int) -> None:
         if x <= 750 and y <= 750:
@@ -78,12 +90,15 @@ class Grid:
                 #print("played")
                 self.set_cell(grid_x, grid_y, self.number_buttons.selected_num)
         self.number_buttons.button_clicked(x, y)
+<<<<<<< HEAD
         self.gamemode.button_clicked(x, y)
 
         if self.gamemode.selected_difficulty != self.difficulty:
             self.difficulty = self.gamemode.selected_difficulty
             self.restart1(self.gamemode.selected_difficulty)
 
+=======
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
         if self.check_grids():
             print("You win!")
             self.win = True
@@ -95,6 +110,7 @@ class Grid:
         self.unplayable = self.unplayable_cells()
         self.win = False
     
+<<<<<<< HEAD
     def restart1(self, difficulty: str) -> None:
         self.grid = create_grid(SUB_GRID_SIZE)
         self.__testgrid = deepcopy(self.grid)
@@ -102,6 +118,8 @@ class Grid:
         self.unplayable = self.unplayable_cells()
         self.win = False
     
+=======
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
     def check_grids(self):
         for y in range(len(self.grid)):
             for x in range(len(self.grid)):
@@ -147,7 +165,10 @@ class Grid:
         self.__draw_lines(pg, surface)
         self.__draw_numbers(surface)
         self.number_buttons.draw(pg, surface)
+<<<<<<< HEAD
         self.gamemode.draw(pg, surface)
+=======
+>>>>>>> 394a671b90bab4b1c65afdddbdfe1b01ba2fb8c8
 
     def get_cell(self, x: int, y: int) -> int:
         # get a cell value at y, x coordinate
